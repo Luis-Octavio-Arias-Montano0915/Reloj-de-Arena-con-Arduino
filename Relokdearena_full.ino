@@ -231,7 +231,7 @@ int getGravity() {
 
   if (ax >= 20 & az <= 5  )  { return 90;   }                 //Arena hacia la derecha 
   if (ax >= -10 & az > 0 ) { return 180; }                     //Funciona como reloj de arena arriba - abajo
-  if (ax >= -10 & ay <= 25  )  { return 0;   }                //Funciona como reloj de arena abajo - arriba 
+  if (ax >= -40000 & az <= -15000  )  { return 0;   }                //Funciona como reloj de arena abajo - arriba 
   if (ax <= -20 & az >= -5) { return 270; }                   //Arena hacia la izquierda  
 
         
