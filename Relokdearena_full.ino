@@ -20,12 +20,6 @@
 #define PIN_CLK 13      // CLK
 #define PIN_LOAD 10     // CS
 
-
-// Accelerometer
-/*
-#define PIN_SDA A4       //SDA
-#define PIN_SCL A5       //SCL 
-*/
 #define PIN_BUZZER 13
 
 // Esto tiene en cuenta cómo se montan las matrices.
@@ -204,6 +198,7 @@ void setupAcelerometro(){
 
   if (sensor.testConnection()) Serial.println("Sensor iniciado correctamente");
   else Serial.println("Error al iniciar el sensor");
+  Con esta función, se puede inicializar el acelerómetro MP6030
 }
 */
 
@@ -225,7 +220,7 @@ int getGravity() {
   Serial.print(az); Serial.print("\t");
   Serial.print(gx); Serial.print("\t");
   Serial.print(gy); Serial.print("\t");
-  Serial.println(gz);
+  Serial.println(gz); //Estos valores los imprime en consola, para saber si en realidad nuestro acelerometro sirve
 
   delay(100);     
 
@@ -233,7 +228,7 @@ int getGravity() {
   if (ax >= -10 & az > 0 ) { return 180; }                     //Funciona como reloj de arena arriba - abajo
   if (ax >= -40000 & az <= -15000  )  { return 0;   }                //Funciona como reloj de arena abajo - arriba 
   if (ax <= -20 & az >= -5) { return 270; }                   //Arena hacia la izquierda  
-
+    //Basandonos en los valores en consola, logramos modificar los valores originales para adaptarlos a nuestro Hardware
         
 }
 
@@ -466,18 +461,6 @@ void buttonPush() {
 void setup() {
   
   Serial.begin(9600);
-  // configurar el codificador rotatorio
-/*
-  pinMode(PIN_ENC_1, INPUT);
-  pinMode(PIN_ENC_2, INPUT);
-  pinMode(PIN_ENC_BUTTON, INPUT);
-  digitalWrite(PIN_ENC_1, HIGH); //turn pullup resistor on
-  digitalWrite(PIN_ENC_2, HIGH); //turn pullup resistor on
-  digitalWrite(PIN_ENC_BUTTON, HIGH); //turn pullup resistor on
-  attachInterrupt(digitalPinToInterrupt(PIN_ENC_1), updateEncoder, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(PIN_ENC_2), updateEncoder, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(PIN_ENC_BUTTON), buttonPush, RISING);
-*/       //Definir el rango, valores 2, 4, 8 o 16
 
    randomSeed(analogRead(A0));
 
